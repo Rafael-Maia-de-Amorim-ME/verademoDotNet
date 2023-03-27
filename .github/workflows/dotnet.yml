@@ -80,6 +80,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Veracode SCA
         env:
-          SRCCLR_API_TOKEN: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjY1Nzc0LCJleHAiOjE2Nzk5MjIyNjcsImF1dGhvcml0aWVzIjoiQUdFTlQiLCJqdGkiOiI3YTJlYmYxOS01NjU5LTQ5YmYtYTUyMC1hMWZkNWRhOTE3YjYiLCJjbGllbnRfaWQiOiIiLCJzY29wZSI6W119.K36DN9KI5uVDPtNqtZ44Q0ZUoUPTc13YdfgptR2BZ3KdAPwECqEcRtu9Ga9HWtJjtUfjOnEOJVWfp4M7_OVzcJkaFLN6CEPvG2qjaBjdMkgyZaWQ4F8LD9Xh2ydLp0UFVp_ckFP52YmtQvm3jJmJ3vPNaOX07fg3qyyocRvK1Ag'
+          SRCCLR_API_TOKEN: ${{ secrets.SCA }}
         run: |
           curl -sSL 'https://download.sourceclear.com/ci.sh' | bash -s – scan --update-advisor --pull-request
