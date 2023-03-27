@@ -75,10 +75,11 @@ jobs:
           
   Veracode_SCA:
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - uses: actions/checkout@v2
       - name: Veracode SCA
         env:
-          SRCCLR_API_TOKEN: '6f199cce-75f4-485b-96af-35fd9ed6b823'
+          SRCCLR_API_TOKEN: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjY1Nzc0LCJleHAiOjE2Nzk5MjIyNjcsImF1dGhvcml0aWVzIjoiQUdFTlQiLCJqdGkiOiI3YTJlYmYxOS01NjU5LTQ5YmYtYTUyMC1hMWZkNWRhOTE3YjYiLCJjbGllbnRfaWQiOiIiLCJzY29wZSI6W119.K36DN9KI5uVDPtNqtZ44Q0ZUoUPTc13YdfgptR2BZ3KdAPwECqEcRtu9Ga9HWtJjtUfjOnEOJVWfp4M7_OVzcJkaFLN6CEPvG2qjaBjdMkgyZaWQ4F8LD9Xh2ydLp0UFVp_ckFP52YmtQvm3jJmJ3vPNaOX07fg3qyyocRvK1Ag'
         run: |
           curl -sSL 'https://download.sourceclear.com/ci.sh' | bash -s – scan --update-advisor --pull-request
