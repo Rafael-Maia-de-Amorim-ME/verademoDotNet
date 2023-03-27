@@ -72,3 +72,13 @@ jobs:
           curl -sSO https://downloads.veracode.com/securityscan/pipeline-scan-LATEST.zip
           unzip pipeline-scan-LATEST.zip
           java -jar pipeline-scan.jar -vid $VID -vkey $VKEY -f $CaminhoArquivo --issue_details true
+          
+  Veracode_SCA:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Veracode SCA
+        env:
+          SRCCLR_API_TOKEN: '6f199cce-75f4-485b-96af-35fd9ed6b823'
+        run: |
+          curl -sSL 'https://download.sourceclear.com/ci.sh' | bash -s – scan --update-advisor --pull-request
