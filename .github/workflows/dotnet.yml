@@ -16,6 +16,10 @@ jobs:
            NuGet restore
            cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\"
            .\MSBuild.exe $Env:GITHUB_WORKSPACE\Verademo-dotnet.sln
+  Veracode_SCA:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
       - name: Veracode SCA
         env:
           SRCCLR_SCM_TYPE: GITHUB
